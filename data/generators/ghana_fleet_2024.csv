@@ -1,53 +1,41 @@
 # Ghana 2024 Generator Fleet
-# Sources: Energy Commission National Energy Statistical Bulletin 2025
-#          WEM Bulletin Issue 102 (heat rates + fuel prices, Operational Fact Sheet)
-
-# Ghana 2024 Generator Fleet
 # Sources: Energy Commission National Energy Statistical Bulletin 2025 (Table 3.2)
 #          WEM Bulletin Issue 102 (heat rates + fuel prices, Operational Fact Sheet)
 #
 # Marginal Cost Methodology:
-# Gas plants:  marginal_cost (USD/MWh) = heat_rate (Btu/kWh) x fuel_price (USD/MMBtu) / 1000
-#              heat rates from WEM Issue 102 Operational Fact Sheet (fuel consumption table)
-#              fuel prices from WEM Issue 102 Economic Fact Sheet (average fuel price table)
-#              plants without heat rates (Early_Power, Genser, Takoradi_T3) use fleet average
-# Hydro:       marginal_cost = 0.0 (no fuel cost, variable O&M treated as fixed)
-#              water scarcity modelled via p_max_pu constraints from reservoir levels
-# Solar:       marginal_cost = 0.0 (no fuel cost)
-# Biogas:      marginal_cost = 10.0 USD/MWh (estimated, no bulletin data available)
-# Capital cost = 0 for all plants (existing fleet, no new investment in 2024 baseline)
+# Gas:    marginal_cost (USD/MWh) = heat_rate (Btu/kWh) x fuel_price (USD/MMBtu) / 1000
+#         heat rates from WEM Issue 102 Operational Fact Sheet
+#         fuel prices from WEM Issue 102 Economic Fact Sheet
+#         plants without heat rates use fleet average (75.0 USD/MWh)
+# Hydro:  marginal_cost = 0.0, water scarcity via monthly p_max_pu constraints
+# Solar:  marginal_cost = 0.0, availability via hourly solar CF profile
+# Biogas: marginal_cost = 10.0 USD/MWh (estimated)
+# Capital cost = 0 for all (existing fleet, 2024 baseline)
 
 name,carrier,p_nom_mw,marginal_cost_usd_mwh,capital_cost,p_max_pu,status
-...
-
-name,carrier,p_nom_mw,marginal_cost_usd_mwh,capital_cost,p_max_pu,status
-
-Akosombo,      hydro,   1020,  0.0,    0,  1.0,  operational
-Kpong,         hydro,    160,  0.0,    0,  1.0,  operational
-Bui,           hydro,    404,  0.0,    0,  1.0,  operational
-
-Bui_Solar,         solar,  55.0,  0.0,  0,  1.0,  operational
-VRA_Kaleo_Solar,   solar,  29.0,  0.0,  0,  1.0,  operational
-VRA_Navrongo_Solar,solar,   2.5,  0.0,  0,  1.0,  operational
-VRA_Lawra_Solar,   solar,   6.5,  0.0,  0,  1.0,  operational
-BXC_Solar,         solar,  20.0,  0.0,  0,  1.0,  operational
-Meinergy_Solar,    solar,  20.0,  0.0,  0,  1.0,  operational
-
-TAPCO,       gas,  330,  65.57,   0,  1.0,  operational
-TICO,        gas,  340,  117.30,  0,  1.0,  operational
-SAPP,        gas,  560,  65.14,   0,  1.0,  operational
-TT1PP,       gas,  110,  82.93,   0,  1.0,  operational
-TT2PP,       gas,   80,  82.93,   0,  0.0,  offline
-CENIT,       gas,  110,  106.24,  0,  1.0,  operational
-Karpower,    gas,  470,  62.67,   0,  1.0,  operational
-AMERI,       gas,  250,  80.45,   0,  1.0,  operational
-Twin_City,   gas,  210,  63.39,   0,  1.0,  operational
-Cenpower,    gas,  360,  85.18,   0,  1.0,  operational
-AKSA,        gas,  370,  83.64,   0,  1.0,  operational
-KTPP,        gas,  220,  105.03,  0,  1.0,  operational
-Early_Power, gas,  200,  75.0,    0,  1.0,  operational
-Genser,      gas,  290,  75.0,    0,  1.0,  operational
-Bridge_Power,gas,  187,  78.61,   0,  1.0,  operational
-Takoradi_T3, gas,  132,  75.0,    0,  0.0,  offline
-
-Safisana,  biogas,  0.1,  10.0,  0,  1.0,  operational
+Akosombo,hydro,1020,0.0,0,1.0,operational
+Kpong,hydro,160,0.0,0,1.0,operational
+Bui,hydro,404,0.0,0,1.0,operational
+Bui_Solar,solar,55.0,0.0,0,1.0,operational
+VRA_Kaleo_Solar,solar,29.0,0.0,0,1.0,operational
+VRA_Navrongo_Solar,solar,2.5,0.0,0,1.0,operational
+VRA_Lawra_Solar,solar,6.5,0.0,0,1.0,operational
+BXC_Solar,solar,20.0,0.0,0,1.0,operational
+Meinergy_Solar,solar,20.0,0.0,0,1.0,operational
+TAPCO,gas,330,65.57,0,1.0,operational
+TICO,gas,340,117.30,0,1.0,operational
+SAPP,gas,560,65.14,0,1.0,operational
+TT1PP,gas,110,82.93,0,1.0,operational
+TT2PP,gas,80,82.93,0,0.0,offline
+CENIT,gas,110,106.24,0,1.0,operational
+Karpower,gas,470,62.67,0,1.0,operational
+AMERI,gas,250,80.45,0,1.0,operational
+Twin_City,gas,210,63.39,0,1.0,operational
+Cenpower,gas,360,85.18,0,1.0,operational
+AKSA,gas,370,83.64,0,1.0,operational
+KTPP,gas,220,105.03,0,1.0,operational
+Early_Power,gas,200,75.0,0,1.0,operational
+Genser,gas,290,75.0,0,1.0,operational
+Bridge_Power,gas,187,78.61,0,1.0,operational
+Takoradi_T3,gas,132,75.0,0,0.0,offline
+Safisana,biogas,0.1,10.0,0,1.0,operational
